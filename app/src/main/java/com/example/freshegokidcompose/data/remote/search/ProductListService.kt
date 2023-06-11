@@ -1,6 +1,6 @@
-package com.example.freshegokidcompose.network
+package com.example.freshegokidcompose.data.remote.search
 
-import com.example.freshegokidcompose.model.ProductListPage
+import com.example.freshegokidcompose.data.model.search.ProductListPage
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Headers

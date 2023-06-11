@@ -1,6 +1,8 @@
-package com.example.freshegokidcompose.model
+package com.example.freshegokidcompose.domain
 
 import android.util.Log
+import com.example.freshegokidcompose.data.model.search.ProductListPage
+import com.example.freshegokidcompose.data.repository.search.ListRepository
 import com.example.freshegokidcompose.helpers.InteractorHelper
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers

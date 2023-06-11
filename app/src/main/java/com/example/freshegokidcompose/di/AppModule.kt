@@ -4,6 +4,8 @@ import android.content.Context
 import com.example.freshegokidcompose.BaseApplication
 import com.example.freshegokidcompose.data.remote.home.HomeRetroFit
 import com.example.freshegokidcompose.data.remote.home.HomeService
+import com.example.freshegokidcompose.data.remote.search.ProductListRetroFit
+import com.example.freshegokidcompose.data.remote.search.ProductListService
 import com.example.freshegokidcompose.helpers.InteractorHelper
 import com.example.freshegokidcompose.helpers.RepositoryHelper
 import com.example.freshegokidcompose.network.*

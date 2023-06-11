@@ -1,6 +1,5 @@
-package com.example.freshegokidcompose.model
+package com.example.freshegokidcompose.data.model.search
 
-import com.example.freshegokidcompose.data.model.home.SearchResult
 import pl.droidsonroids.jspoon.annotation.Selector
 
 class ProductListPage {

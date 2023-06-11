@@ -1,4 +1,4 @@
-package com.example.freshegokidcompose.data.model.home
+package com.example.freshegokidcompose.data.model.search
 
 import pl.droidsonroids.jspoon.annotation.Selector
 

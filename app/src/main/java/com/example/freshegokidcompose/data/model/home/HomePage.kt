@@ -1,6 +1,6 @@
 package com.example.freshegokidcompose.data.model.home
 
-import com.example.freshegokidcompose.data.model.home.SearchResult
+import com.example.freshegokidcompose.data.model.search.SearchResult
 import pl.droidsonroids.jspoon.annotation.Selector
 
 data class HomePage constructor(

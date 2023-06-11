@@ -1,6 +1,6 @@
 package com.example.freshegokidcompose.viewmodel
 
-import com.example.freshegokidcompose.data.model.home.SearchResult
+import com.example.freshegokidcompose.data.model.search.SearchResult
 
 sealed class MainViewState {
     object LoadingBannerAndProducts : MainViewState()

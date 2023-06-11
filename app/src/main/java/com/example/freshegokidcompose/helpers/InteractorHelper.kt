@@ -1,11 +1,10 @@
 package com.example.freshegokidcompose.helpers
 
 import android.util.Log
-import com.example.freshegokidcompose.data.model.home.SearchResult
+import com.example.freshegokidcompose.data.model.search.SearchResult
 
 class InteractorHelper {
     fun refactorImageUrlsForPage(searchResult: SearchResult) {
-//        var imageUrl = searchResult.imageUrl
         searchResult.imageUrl?.let { imageUrl ->
             val refactoredUrl = imageUrl.replace("{width}", "360")
             Log.i("image_url_raw", "print image raw url: $imageUrl")

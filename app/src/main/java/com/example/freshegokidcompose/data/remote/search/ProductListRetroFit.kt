@@ -1,5 +1,6 @@
-package com.example.freshegokidcompose.network
+package com.example.freshegokidcompose.data.remote.search
 
+import com.example.freshegokidcompose.network.BaseService
 import okhttp3.OkHttpClient
 import pl.droidsonroids.retrofit2.JspoonConverterFactory
 import retrofit2.Retrofit

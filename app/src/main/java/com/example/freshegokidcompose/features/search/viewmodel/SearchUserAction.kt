@@ -1,4 +1,4 @@
-package com.example.freshegokidcompose.viewmodel
+package com.example.freshegokidcompose.features.search.viewmodel
 
 sealed class SearchUserAction {
     object AwaitingInput: SearchUserAction()

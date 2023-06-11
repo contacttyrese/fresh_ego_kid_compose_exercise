@@ -1,10 +1,11 @@
-package com.example.freshegokidcompose.viewmodel
+package com.example.freshegokidcompose.features.search.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.freshegokidcompose.model.*
+import com.example.freshegokidcompose.data.model.search.ProductListPage
+import com.example.freshegokidcompose.domain.ListInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -79,4 +80,9 @@ class SearchViewModel @Inject constructor(
         throwable.printStackTrace()
         _viewState.postValue(SearchViewState.ProductLoadError(throwable))
     }
+
+//    fun getSearchResultsByQuery(query: String): Observable<ProductListPage> {
+//        Log.i("user_action_success", "user query success")
+//        return interactor.getPageObservableWithSearchResultsByQuery(query)
+//    }
 }

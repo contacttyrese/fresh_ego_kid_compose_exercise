@@ -3,63 +3,62 @@ package com.example.freshegokidcompose.view
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.example.freshegokidcompose.data.model.home.SearchResult
+import com.example.freshegokidcompose.data.model.search.SearchResult
 import com.example.freshegokidcompose.ui.theme.CustomAppTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun DisplayTopAppBar() {
-    CenterAlignedTopAppBar(
-        title = {
-            Text(
-                style = MaterialTheme.typography.titleMedium,
-                text = "Fresh Ego Kid"
-            )
-        },
-        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = Color.Black,
-            titleContentColor = Color.White,
-            actionIconContentColor = Color.White,
-            navigationIconContentColor = Color.White
-        ),
-        navigationIcon = {
-            IconButton(
-                content = {
-                    Icon(
-                        Icons.Default.Home,
-                        "home"
-                    )
-                },
-                onClick = {}
-            )
-        },
-        scrollBehavior = null,
-        actions = {
-            IconButton(
-                content = {
-                    Icon(
-                        Icons.Default.Search,
-                        "search"
-                    )
-                },
-                onClick = { }
-            )
-        }
-    )
-}
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun DisplayTopAppBar(context: Context) {
+//    CenterAlignedTopAppBar(
+//        title = {
+//            Text(
+//                style = MaterialTheme.typography.titleMedium,
+//                text = "Fresh Ego Kid"
+//            )
+//        },
+//        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+//            containerColor = Color.Black,
+//            titleContentColor = Color.White,
+//            actionIconContentColor = Color.White,
+//            navigationIconContentColor = Color.White
+//        ),
+//        navigationIcon = {
+//            IconButton(
+//                content = {
+//                    Icon(
+//                        Icons.Default.Home,
+//                        "home"
+//                    )
+//                },
+//                onClick = {}
+//            )
+//        },
+//        scrollBehavior = null,
+//        actions = {
+//            IconButton(
+//                content = {
+//                    Icon(
+//                        Icons.Default.Search,
+//                        "search"
+//                    )
+//                },
+//                onClick = {
+//                    val intent = Intent(context, SearchActivity::class.java)
+//                    ContextWrapper(context).startActivity(intent)
+//                }
+//            )
+//        }
+//    )
+//}
 
 @Composable
 fun DisplayHomeTitle() {
@@ -167,10 +166,13 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     CustomAppTheme() {
-        val imageurl = ""
+        val imageurl = "https://cdn.shopify.com/s/files/1/2579/8156/products/045-FEK_360x.jpg"
+        val imageurl2 = "https://cdn.shopify.com/s/files/1/2579/8156/products/001freshegokidXboxblacktrucker_360x.jpg"
+        val detailsUrl = "https://www.freshegokid.com/products/new-era-flower-print-trucker-in-black?"
+        val detailsUrl2 = "https://www.freshegokid.com/products/xbox-black-trucker"
         val mockList = listOf(
-            SearchResult("key", "title", "price", "imageurl", "detailsurl"),
-            SearchResult("key2", "title2", "price2", "imageurl2", "detailsurl2")
+            SearchResult("key", "title", "price", imageurl, detailsUrl),
+            SearchResult("key2", "title2", "price2", imageurl2, detailsUrl2)
         )
         DisplaySearchResults(searchResults = mockList)
     }
