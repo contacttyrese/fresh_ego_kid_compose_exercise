@@ -31,7 +31,12 @@ class SearchActivity : ComponentActivity() {
                     viewModel.userActionSubject
                 }
                 Column() {
-                    DisplayTopAppBar(LocalContext.current, "Search", true)
+                    DisplayTopAppBar(
+                        LocalContext.current,
+                        "Search",
+                        true,
+                        false
+                    )
                     DisplaySearchBar(userAction)
                     DisplaySearchResultsFromViewState(viewState)
                 }

@@ -1,24 +1,31 @@
 package com.example.freshegokidcompose.features.search.view
 
 import android.util.Log
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import com.example.freshegokidcompose.data.model.search.SearchResult
 import com.example.freshegokidcompose.data.model.search.ProductListPage
 import com.example.freshegokidcompose.ui.theme.CustomAppTheme
-import com.example.freshegokidcompose.view.DisplaySearchResults
 import com.example.freshegokidcompose.features.search.viewmodel.SearchUserAction
 import com.example.freshegokidcompose.features.search.viewmodel.SearchViewState
 import io.reactivex.subjects.PublishSubject
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun DisplaySearchBar(userAction: PublishSubject<SearchUserAction>) {
     var text by rememberSaveable {
@@ -27,6 +34,7 @@ fun DisplaySearchBar(userAction: PublishSubject<SearchUserAction>) {
     var isActive by rememberSaveable {
         mutableStateOf(false)
     }
+    val keyboardController = LocalSoftwareKeyboardController.current
     SearchBar(
         query = text,
         shape = SearchBarDefaults.inputFieldShape,
@@ -43,6 +51,7 @@ fun DisplaySearchBar(userAction: PublishSubject<SearchUserAction>) {
         },
         onSearch = { query ->
             userAction.onNext(SearchUserAction.QuerySubmittedSuccess(query))
+            keyboardController?.hide()
         },
         active = true,
         onActiveChange = { active ->
@@ -86,6 +95,81 @@ fun DisplaySearchResultsFromViewState(viewState: SearchViewState) {
             Log.i("activity_search_setup", "search results are setup for loading")
         }
     }
+}
+
+@Composable
+fun DisplaySearchResults(searchResults: List<SearchResult>) {
+    LazyColumn(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
+        items(
+            items = searchResults,
+            itemContent = { item ->
+                DisplaySearchResultListItem(searchResult = item)
+            }
+        )
+    }
+}
+
+@Composable
+fun DisplaySearchResultListItem(searchResult: SearchResult) {
+    Card(
+        modifier = Modifier
+            .padding(10.dp)
+//        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .padding(3.dp)
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start
+        ) {
+            searchResult.imageUrl?.let { searchResultImageUrl ->
+                DisplaySearchResultImage(
+                    imageUrl = searchResultImageUrl
+                )
+            }
+            Column(
+                horizontalAlignment = Alignment.Start,
+                verticalArrangement = Arrangement.SpaceEvenly
+            ) {
+                searchResult.title?.let { searchResultTitle ->
+                    DisplaySearchResultText(
+                        text = searchResultTitle
+                    )
+                }
+
+                searchResult.price?.let { searchResultPrice ->
+                    DisplaySearchResultText(
+                        text = searchResultPrice
+                    )
+                }
+            }
+        }
+
+    }
+}
+
+@OptIn(ExperimentalGlideComposeApi::class)
+@Composable
+fun DisplaySearchResultImage(imageUrl: String) {
+    GlideImage(
+        model = imageUrl,
+        contentScale = ContentScale.Inside,
+        modifier = Modifier
+            .fillMaxWidth(0.2f),
+        contentDescription = "image default"
+    )
+}
+
+@Composable
+fun DisplaySearchResultText(text: String) {
+    Text(
+        text = text
+    )
 }
 
 @Preview(showBackground = true)

@@ -14,7 +14,8 @@ import com.example.freshegokidcompose.features.search.SearchActivity
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DisplayTopAppBar(context: Context, heading: String, isHomeEnabled: Boolean) {
+fun DisplayTopAppBar(context: Context, heading: String,
+                     isHomeEnabled: Boolean, isSearchEnabled: Boolean) {
     CenterAlignedTopAppBar(
         title = {
             Text(
@@ -55,7 +56,8 @@ fun DisplayTopAppBar(context: Context, heading: String, isHomeEnabled: Boolean) 
                 onClick = {
                     val intent = Intent(context, SearchActivity::class.java)
                     ContextWrapper(context).startActivity(intent)
-                }
+                },
+                enabled = isSearchEnabled
             )
         }
     )
