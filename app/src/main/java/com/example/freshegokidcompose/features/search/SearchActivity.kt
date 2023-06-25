@@ -14,6 +14,7 @@ import com.example.freshegokidcompose.features.search.view.DisplaySearchResultsF
 import com.example.freshegokidcompose.ui.theme.CustomAppTheme
 import com.example.freshegokidcompose.features.search.viewmodel.SearchViewModel
 import com.example.freshegokidcompose.features.search.viewmodel.SearchViewState
+import com.example.freshegokidcompose.features.search.viewmodel.SearchQueryState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,14 +31,20 @@ class SearchActivity : ComponentActivity() {
                 val userAction = remember {
                     viewModel.userActionSubject
                 }
-                Column() {
+                val queryAction = remember {
+                    viewModel.queryActionSubject
+                }
+                val queryState by remember {
+                    viewModel.searchState
+                }.observeAsState(initial = SearchQueryState.SetupState)
+                Column {
                     DisplayTopAppBar(
                         LocalContext.current,
                         "Search",
                         true,
                         false
                     )
-                    DisplaySearchBar(userAction)
+                    DisplaySearchBar(userAction, queryAction, queryState, viewModel.getSearchQueries())
                     DisplaySearchResultsFromViewState(viewState)
                 }
             }

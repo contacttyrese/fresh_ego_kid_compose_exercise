@@ -1,6 +1,7 @@
 package com.example.freshegokidcompose.di
 
 import android.content.Context
+import androidx.room.Room
 import com.example.freshegokidcompose.BaseApplication
 import com.example.freshegokidcompose.data.remote.home.HomeRetroFit
 import com.example.freshegokidcompose.data.remote.home.HomeService
@@ -9,6 +10,8 @@ import com.example.freshegokidcompose.data.remote.search.ProductListService
 import com.example.freshegokidcompose.helpers.InteractorHelper
 import com.example.freshegokidcompose.helpers.RepositoryHelper
 import com.example.freshegokidcompose.network.*
+import com.example.freshegokidcompose.data.local.SearchQueryDao
+import com.example.freshegokidcompose.data.local.SearchQueryDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -55,5 +58,20 @@ object AppModule {
     @Provides
     fun provideInteractorHelper(): InteractorHelper {
         return InteractorHelper()
+    }
+
+    @Singleton
+    @Provides
+    fun provideSearchQueryDatabase(@ApplicationContext app: Context): SearchQueryDatabase {
+        return Room.databaseBuilder(
+            app,
+            SearchQueryDatabase::class.java,
+            name = "queries.db"
+        ).build()
+    }
+
+    @Provides
+    fun provideSearchQueryDao(searchQueryDatabase: SearchQueryDatabase): SearchQueryDao {
+        return searchQueryDatabase.dao
     }
 }
