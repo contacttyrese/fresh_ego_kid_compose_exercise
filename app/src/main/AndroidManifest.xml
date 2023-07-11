@@ -31,6 +31,7 @@
                 android:value="" />
         </activity>
         <activity android:name=".features.search.SearchActivity"/>
+        <activity android:name=".features.productdetails.ProductDetailsActivity"/>
     </application>
 
 </manifest>

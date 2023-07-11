@@ -1,12 +1,13 @@
-package com.example.freshegokidcompose.model
+package com.example.freshegokidcompose.data.repository.productdetails
 
 import android.util.Log
-import com.example.freshegokidcompose.network.ProductDetailsService
+import com.example.freshegokidcompose.data.model.productdetails.ProductDetailsPage
+import com.example.freshegokidcompose.data.remote.productdetails.DetailsService
 import io.reactivex.Observable
 import javax.inject.Inject
 
 class DetailsRepository @Inject constructor(
-    private val detailsService: ProductDetailsService
+    private val detailsService: DetailsService
 ) {
     fun fetchDetailsByDetailsUrl(detailsUrl: String): Observable<ProductDetailsPage> {
         return when (detailsUrl.isNotBlank()) {

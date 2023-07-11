@@ -1,5 +1,7 @@
 package com.example.freshegokidcompose.features.search.view
 
+import android.content.ContextWrapper
+import android.content.Intent
 import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -21,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -32,6 +35,7 @@ import com.example.freshegokidcompose.ui.theme.CustomAppTheme
 import com.example.freshegokidcompose.features.search.viewmodel.SearchUserAction
 import com.example.freshegokidcompose.features.search.viewmodel.SearchViewState
 import com.example.freshegokidcompose.data.model.search.SearchQuery
+import com.example.freshegokidcompose.features.productdetails.ProductDetailsActivity
 import com.example.freshegokidcompose.features.search.viewmodel.SearchQueryState
 import com.example.freshegokidcompose.features.search.viewmodel.SearchQueryUserAction
 import io.reactivex.Observable
@@ -263,11 +267,18 @@ fun DisplaySearchResults(searchResults: List<SearchResult>) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DisplaySearchResultListItem(searchResult: SearchResult) {
+    val context = LocalContext.current
     Card(
         modifier = Modifier
-            .padding(10.dp)
+            .padding(10.dp),
+        onClick = {
+            val intent = Intent(context, ProductDetailsActivity::class.java)
+            intent.putExtra("detailsUrl", searchResult.detailsUrl)
+            ContextWrapper(context).startActivity(intent)
+        }
     ) {
         Row(
             modifier = Modifier

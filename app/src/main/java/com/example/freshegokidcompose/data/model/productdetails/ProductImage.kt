@@ -1,4 +1,4 @@
-package com.example.freshegokidcompose.model
+package com.example.freshegokidcompose.data.model.productdetails
 
 import com.squareup.moshi.Json
 

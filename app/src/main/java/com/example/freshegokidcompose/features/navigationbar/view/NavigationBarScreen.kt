@@ -9,13 +9,15 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import com.example.freshegokidcompose.features.home.HomeActivity
 import com.example.freshegokidcompose.features.search.SearchActivity
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DisplayTopAppBar(context: Context, heading: String,
+fun DisplayTopAppBar(heading: String,
                      isHomeEnabled: Boolean, isSearchEnabled: Boolean) {
+    val context = LocalContext.current
     CenterAlignedTopAppBar(
         title = {
             Text(

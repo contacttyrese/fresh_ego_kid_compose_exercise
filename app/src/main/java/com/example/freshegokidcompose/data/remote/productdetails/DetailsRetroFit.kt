@@ -1,16 +1,16 @@
-package com.example.freshegokidcompose.network
+package com.example.freshegokidcompose.data.remote.productdetails
 
+import com.example.freshegokidcompose.data.remote.BaseService
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-object ProductDetailsRetroFit {
+object DetailsRetroFit {
     private fun createRetroFit(): Retrofit {
         val client = OkHttpClient.Builder()
-            val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-            client.addInterceptor(interceptor)
+//            val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+//            client.addInterceptor(interceptor)
         return Retrofit.Builder()
             .baseUrl(BaseService.API_URL)
             .addConverterFactory(MoshiConverterFactory.create())
@@ -19,7 +19,7 @@ object ProductDetailsRetroFit {
             .build()
     }
 
-    fun createProductDetailsService(): ProductDetailsService {
-        return createRetroFit().create(ProductDetailsService::class.java)
+    fun createDetailsService(): DetailsService {
+        return createRetroFit().create(DetailsService::class.java)
     }
 }

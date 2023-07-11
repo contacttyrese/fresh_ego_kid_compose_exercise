@@ -1,7 +1,9 @@
-package com.example.freshegokidcompose.model
+package com.example.freshegokidcompose.domain
 
 import android.os.Build
 import android.text.Html
+import com.example.freshegokidcompose.data.repository.productdetails.DetailsRepository
+import com.example.freshegokidcompose.data.model.productdetails.ProductDetailsPage
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

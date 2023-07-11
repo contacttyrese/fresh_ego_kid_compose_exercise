@@ -37,7 +37,6 @@ class HomeActivity : ComponentActivity() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     DisplayTopAppBar(
-                        LocalContext.current,
                         "Fresh Ego Kid",
                         false,
                         true

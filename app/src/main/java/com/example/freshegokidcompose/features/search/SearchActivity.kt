@@ -39,7 +39,6 @@ class SearchActivity : ComponentActivity() {
                 }.observeAsState(initial = SearchQueryState.SetupState)
                 Column {
                     DisplayTopAppBar(
-                        LocalContext.current,
                         "Search",
                         true,
                         false

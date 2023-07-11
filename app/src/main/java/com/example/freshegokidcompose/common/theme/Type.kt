@@ -29,7 +29,8 @@ val Typography = Typography(
 
 val CustomTypography = Typography(
     bodyMedium = TextStyle(
-        fontFamily = FontFamily.SansSerif
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 14.sp
     ),
     titleMedium = TextStyle(
         fontFamily = FontFamily.SansSerif,

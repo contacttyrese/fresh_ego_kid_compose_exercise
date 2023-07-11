@@ -1,6 +1,6 @@
 package com.example.freshegokidcompose.data.remote.home
 
-import com.example.freshegokidcompose.network.BaseService
+import com.example.freshegokidcompose.data.remote.BaseService
 import okhttp3.OkHttpClient
 import pl.droidsonroids.retrofit2.JspoonConverterFactory
 import retrofit2.Retrofit

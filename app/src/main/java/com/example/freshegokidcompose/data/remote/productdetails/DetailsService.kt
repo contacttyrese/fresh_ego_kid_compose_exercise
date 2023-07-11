@@ -1,12 +1,12 @@
-package com.example.freshegokidcompose.network
+package com.example.freshegokidcompose.data.remote.productdetails
 
-import com.example.freshegokidcompose.model.ProductDetailsPage
+import com.example.freshegokidcompose.data.model.productdetails.ProductDetailsPage
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
 
-interface ProductDetailsService {
+interface DetailsService {
     @Headers(
         "Host: www.freshegokid.com",
         "Connection: www.freshegokid.com",

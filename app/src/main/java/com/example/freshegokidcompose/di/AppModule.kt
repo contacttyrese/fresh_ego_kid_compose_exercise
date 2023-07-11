@@ -9,9 +9,10 @@ import com.example.freshegokidcompose.data.remote.search.ProductListRetroFit
 import com.example.freshegokidcompose.data.remote.search.ProductListService
 import com.example.freshegokidcompose.helpers.InteractorHelper
 import com.example.freshegokidcompose.helpers.RepositoryHelper
-import com.example.freshegokidcompose.network.*
 import com.example.freshegokidcompose.data.local.SearchQueryDao
 import com.example.freshegokidcompose.data.local.SearchQueryDatabase
+import com.example.freshegokidcompose.data.remote.productdetails.DetailsRetroFit
+import com.example.freshegokidcompose.data.remote.productdetails.DetailsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,8 +37,8 @@ object AppModule {
     }
 
     @Provides
-    fun provideDetailsService(): ProductDetailsService {
-        return ProductDetailsRetroFit.createProductDetailsService()
+    fun provideDetailsService(): DetailsService {
+        return DetailsRetroFit.createDetailsService()
     }
 
     @Provides
